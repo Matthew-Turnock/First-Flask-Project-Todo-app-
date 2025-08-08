@@ -29,3 +29,4 @@ pip3 install flask flask-sqlalchemy
 
 ## Credit:
 Tutorial followed by freeCodeCamp.org, video found at: https://www.youtube.com/watch?v=Z1RJmh_OqeA
+Jake Rieger github: https://github.com/jakerieger/FlaskIntroduction
