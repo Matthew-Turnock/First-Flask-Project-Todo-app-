@@ -1,108 +1,136 @@
-/* Reset some default styles */
-body, h1, h4, input, table, td, th, a {
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Body styling */
-body {
-    background-color: #f5f6fa;
-    color: #2f3640;
-    display: flex;
-    justify-content: center;
-    padding: 40px 20px;
-}
-
-/* Main content container */
-.content {
-    background-color: #ffffff;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f9fc;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Content Wrapper */
+  .content {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 700px;
-}
-
-/* Headings */
-h1 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #273c75;
-}
-
-h4 {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  }
+  
+  /* Title */
+  .content h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #718093;
-}
-
-/* Table styling */
-table {
+    font-size: 2rem;
+    color: #222;
+  }
+  
+  /* Table Styling */
+  table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 25px;
-}
-
-th, td {
-    border: 1px solid #dcdde1;
-    padding: 12px;
+  }
+  
+  table th, table td {
+    padding: 12px 15px;
     text-align: left;
-}
-
-th {
-    background-color: #f1f2f6;
-    color: #2f3640;
-}
-
-td a {
-    color: #40739e;
+  }
+  
+  table th {
+    background: #4a90e2;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  table tr:nth-child(even) {
+    background: #f2f6fb;
+  }
+  
+  table tr:hover {
+    background: #e9f2ff;
+    transition: 0.3s ease;
+  }
+  
+  /* Links */
+  a {
     text-decoration: none;
-    font-size: 0.95rem;
-}
-
-td a:hover {
-    text-decoration: underline;
-}
-
-/* Form styling */
-form {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-input[type="text"] {
-    flex: 1 1 60%;
+    color: #4a90e2;
+    font-weight: 500;
+  }
+  
+  a:hover {
+    color: #2c6dc7;
+  }
+  
+  /* Form Styling */
+  form {
+    display: grid;
+    gap: 15px;
+  }
+  
+  label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  input[type="text"], input[type="date"], select {
+    width: 100%;
     padding: 10px;
-    border: 1px solid #dcdde1;
-    border-radius: 6px;
+    border: 1px solid #dcdfe6;
+    border-radius: 8px;
     font-size: 1rem;
-}
-
-input[type="submit"] {
-    background-color: #44bd32;
-    color: white;
+  }
+  
+  input[type="submit"] {
+    background: #4a90e2;
+    color: #fff;
     border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
+    padding: 12px;
+    border-radius: 8px;
     font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-input[type="submit"]:hover {
-    background-color: #4cd137;
-}
-
-/* Responsive adjustments */
-@media (max-width: 500px) {
-    th, td {
-        font-size: 0.9rem;
+    transition: background 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background: #357ab8;
+  }
+  
+  /* Empty task message */
+  h4 {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    margin: 20px 0;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
     }
-
-    input[type="text"], input[type="submit"] {
-        flex: 1 1 100%;
+    th {
+      display: none;
     }
-}
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+    }
+  }

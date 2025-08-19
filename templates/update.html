@@ -8,9 +8,42 @@
 <div class="content">
     <h1>Update task</h1>
 
-    <form action="/update/{{task.id}}" method="POST">
-        <input type="text" name="content" id="content" value="{{task.content}}">
-        <input type="submit" value="Update">
+    <form action="/update/{{ task.id }}" method="POST">
+        <label for="content">Task:</label>
+        <input 
+            type="text" 
+            name="content" 
+            id="content" 
+            value="{{ task.content }}" 
+            required
+        >
+    
+        <label for="duedate">Due date:</label>
+        <input 
+            type="date" 
+            id="duedate" 
+            name="duedate" 
+            value="{{ task.due_date.strftime('%Y-%m-%d') if task.due_date else '' }}"
+        >
+    
+        <label for="category">Choose a category</label>
+        <select id="category" name="category">
+            <option value="Work" {% if task.category == "Work" %}selected{% endif %}>Work</option>
+            <option value="Personal" {% if task.category == "Personal" %}selected{% endif %}>Personal</option>
+            <option value="Health" {% if task.category == "Health" %}selected{% endif %}>Health</option>
+            <option value="Finance" {% if task.category == "Finance" %}selected{% endif %}>Finance</option>
+            <option value="Learning" {% if task.category == "Learning" %}selected{% endif %}>Learning</option>
+            <option value="Miscellaneous" {% if task.category == "Miscellaneous" %}selected{% endif %}>Miscellaneous</option>
+        </select>
+    
+        <label for="priority">Priority:</label>
+        <select id="priority" name="priority">
+            <option value="High" {% if task.priority == "High" %}selected{% endif %}>High</option>
+            <option value="Mid" {% if task.priority == "Mid" %}selected{% endif %}>Mid</option>
+            <option value="Low" {% if task.priority == "Low" %}selected{% endif %}>Low</option>
+        </select>
+    
+        <input type="submit" value="Update task">
     </form>
 
 </div>

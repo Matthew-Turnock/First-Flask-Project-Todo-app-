@@ -15,23 +15,57 @@
         <tr>
             <th>Task</th>
             <th>Added</th>
+            <th>Date due</th>
+            <th>Category</th>
+            <th>Priority</th>
             <th>Actions</th>
         </tr>
         {% for task in tasks %}
             <tr>
                 <td>{{ task.content }}</td>
-                <td>{{ task.date_created.date() }}</td>
+                <td>{{ task.date_created.strftime("%Y-%m-%d") }}</td>
                 <td>
-                    <a href="/delete/{{task.id}}">Delete</a>
+                {% if task.due_date %}
+                    {{ task.due_date.strftime("%Y-%m-%d") }}
+                {% else %}
+                    —
+                {% endif %}
+                </td>
+                <td>{{ task.category or "—" }}</td>
+                <td>{{ task.priority or "—" }}</td>
+                <td>
+                    <a href="/delete/{{ task.id }}">Delete</a>
                     <br>
-                    <a href="/update/{{task.id}}">Update</a>
+                    <a href="/update/{{ task.id }}">Update</a>
                 </td>
             </tr>
         {% endfor %}
     </table>
     {% endif %}
     <form action="/" method="POST">
+        <label for="contetn">Task:</label>
         <input type="text" name="content" id="content">
+
+        <label for="duedate">Due date:</label>
+        <input type="date" id="duedate" name="duedate">
+
+        <label for="category">Choose a category</label>
+        <select id="category" name="category">
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Health">Health</option>
+          <option value="Finance">Finance</option>
+          <option value="Learning">Learning</option>
+          <option value="Miscellaneous">Miscellaneous</option>
+        </select>
+
+        <label for="priority">Priority:</label>
+        <select id="priority" name="priority">
+            <option value="High">High</option>
+            <option value="Mid">Mid</option>
+            <option value="Low">Low</option>
+          </select>
+
         <input type="submit" value="Add task">
     </form>
 </div>
